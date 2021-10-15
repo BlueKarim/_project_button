@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ButtonBuild.dart';
 
 class RandomButton extends StatefulWidget {
   const RandomButton({ Key? key }) : super(key: key);
@@ -14,69 +15,72 @@ class _RandomButtonState extends State<RandomButton> {
       _RandomTextButton = "Pig";
     });
   }
-  Widget buildButton(){
-    return Expanded(
-      child: ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Stack(
-              children:<Widget>[
-                Positioned.fill(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: <Color>[
-                          Color(0xFF14B8A6),
-                          Color(0xFF5EEAD4),
-                          Color(0xFFCCFBF1),
-                        ]
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      fixedSize: Size(40, 80),
-                      primary: Colors.black,
-                      textStyle: const TextStyle(fontSize: 30),
-                    ),
-                    onPressed: GetString,
-                    child: Text(_RandomTextButton),
-                  ),
-                )
-              ],
-            ),
-          ),
-    );
-  }
   @override
   Widget build(BuildContext context) {
-    return new Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Row(
-            children: [
-              buildButton(),
-            ],
-          ),
-          Row(
-            children: [
-              buildButton(),
-            ],
-          ),
-          Row(
-            children: [
-              buildButton(),
-            ],
-          ),
-          Row(
-            children: [
-              buildButton(),
-            ],
-          ),
-        ],
-      ),
+    return new Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Row(
+          children: [
+            Expanded(
+            child: 
+              MyOutlinedButton(
+              onPressed: GetString,
+              gradient: LinearGradient(colors: [Colors.indigo, Colors.pink]),
+              child: Text(_RandomTextButton),
+            ),
+          ),],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: 
+              DecoratedBox(
+                decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.pink, Colors.green])),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(primary: Colors.transparent),
+                  child: Text('Elevated Button'),
+                ),
+              ),
+            )
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: 
+                RaisedGradientButton(
+                  child: Text(
+                    'Button',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  gradient: LinearGradient(
+                    colors: <Color>[Colors.green, Colors.black],
+                  ),
+                  onPressed: (){
+                    print('button clicked');
+                  }
+                ),
+              )
+          ],
+        ),
+        MyOutlinedButton(
+          onPressed: GetString,
+          gradient: LinearGradient(colors: [Colors.indigo, Colors.pink]),
+          child: Text(_RandomTextButton),
+        ),
+        MyOutlinedButton(
+          onPressed: GetString,
+          gradient: LinearGradient(colors: [Colors.indigo, Colors.pink]),
+          child: Text(_RandomTextButton),
+        ),
+        MyOutlinedButton(
+          onPressed: GetString,
+          gradient: LinearGradient(colors: [Colors.indigo, Colors.pink]),
+          child: Text(_RandomTextButton),
+        ),
+      ]
     );
   }
 }
