@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'ButtonBuild.dart';
+import 'BuildTimeAndScore.dart';
+import 'ButtonBuild2.dart';
 
-class RandomButton extends StatefulWidget {
-  const RandomButton({ Key? key }) : super(key: key);
+class RandomButton extends StatelessWidget {
+  final String name1;
+  final String name2;
+  final String name3;
+  final String name4;
+  final VoidCallback GetString;
+  const RandomButton({ 
+    Key? key,
+    required this.name1,
+    required this.name2,
+    required this.name3,
+    required this.name4,
+    required this.GetString }) : super(key: key);
 
-  @override
-  _RandomButtonState createState() => _RandomButtonState();
-}
-
-class _RandomButtonState extends State<RandomButton> {
-  String _RandomTextButton ="Gradient";
-  void GetString(){
-    setState(() {
-      _RandomTextButton = "Pig";
-    });
-  }
   @override
   Widget build(BuildContext context) {
     return new Column(
@@ -23,25 +24,22 @@ class _RandomButtonState extends State<RandomButton> {
         Row(
           children: [
             Expanded(
-            child: 
-              MyOutlinedButton(
-              onPressed: GetString,
-              gradient: LinearGradient(colors: [Colors.indigo, Colors.pink]),
-              child: Text(_RandomTextButton),
-            ),
+              child: 
+                Container(
+                  child: new GradientButton(
+                    onPressed: GetString,
+                    child: Text(name1.toUpperCase()),
+                ),
+              )
           ),],
         ),
         Row(
           children: [
             Expanded(
               child: 
-              DecoratedBox(
-                decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.pink, Colors.green])),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(primary: Colors.transparent),
-                  child: Text('Elevated Button'),
-                ),
+              new GradientButton(
+                onPressed: GetString,
+                child: Text(name2.toUpperCase()),
               ),
             )
           ],
@@ -50,35 +48,23 @@ class _RandomButtonState extends State<RandomButton> {
           children: [
             Expanded(
               child: 
-                RaisedGradientButton(
-                  child: Text(
-                    'Button',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  gradient: LinearGradient(
-                    colors: <Color>[Colors.green, Colors.black],
-                  ),
-                  onPressed: (){
-                    print('button clicked');
-                  }
-                ),
-              )
+              new GradientButton(
+                onPressed: GetString,
+                child: Text(name3.toUpperCase()),
+              ),
+            )
           ],
         ),
-        MyOutlinedButton(
-          onPressed: GetString,
-          gradient: LinearGradient(colors: [Colors.indigo, Colors.pink]),
-          child: Text(_RandomTextButton),
-        ),
-        MyOutlinedButton(
-          onPressed: GetString,
-          gradient: LinearGradient(colors: [Colors.indigo, Colors.pink]),
-          child: Text(_RandomTextButton),
-        ),
-        MyOutlinedButton(
-          onPressed: GetString,
-          gradient: LinearGradient(colors: [Colors.indigo, Colors.pink]),
-          child: Text(_RandomTextButton),
+        Row(
+          children: [
+            Expanded(
+              child: 
+              new GradientButton(
+                onPressed: GetString,
+                child: Text(name4.toUpperCase()),
+              ),
+            )
+          ],
         ),
       ]
     );
