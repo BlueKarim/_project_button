@@ -27,6 +27,8 @@ class _HomePageState extends State<HomePage> {
   String name3 = '';
   String name4 = '';
   String textStart = 'Start';
+  List ListName = ['','','',''];
+  bool _vilsible = true;
 
   String img(){
     int min =0;
@@ -35,12 +37,12 @@ class _HomePageState extends State<HomePage> {
     int a = random.nextInt(max);
     int b = random.nextInt(max);
     int c = random.nextInt(max);
-    int d = random.nextInt(max);
     namePicture = ListImage[r].toString();
     name1= ListImage[a].toString();
     name2= ListImage[b].toString();
     name3 = ListImage[c].toString();
-    name4 = ListImage[d].toString(); 
+    name4 = ListImage[r].toString();
+    ListName = [name1,name2,name3,name4];
     return namePicture;
   }
   
@@ -53,6 +55,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       if(textStart == 'Start')
       {
+        _vilsible = false;
         timing();
         img();
         textStart = 'Stop';
@@ -71,10 +74,12 @@ class _HomePageState extends State<HomePage> {
         name3.toLowerCase() == namePicture ||
         name4.toLowerCase() == namePicture)
       {
+        _counter = 10;
         score+=10;
         pictureRandom();
       }
       else{
+        _counter = 10;
         score-=5;
         pictureRandom();
       }
@@ -116,15 +121,18 @@ class _HomePageState extends State<HomePage> {
       body: new Center(
         child: new Column(
           children: [
-            new MyOutlinedButton(
+            new Visibility(
+              visible: _vilsible,
+              child: new MyOutlinedButton(
               onPressed: Start,
               child: Text(textStart),
+              ),
             ),
             new TimeAndScore(
               score: score,
               counter: _counter,),
             new Picture(name: namePicture,),
-            new RandomButton(name1: name1,name2: name2,name3: name3,name4: name4,GetString: GetString,),
+            new RandomButton(name1: ListName[3],name2: ListName[2],name3: ListName[1],name4: ListName[0],GetString: GetString,),
           ],
         ),
       ),
