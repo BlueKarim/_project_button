@@ -16,7 +16,7 @@ class GradientButton extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
       child: 
           DecoratedBox(
-            decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.lightBlue.shade900, Colors.blue.shade50])),
+            decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.lightBlue.shade900, Colors.red])),
             child: ElevatedButton(
               onPressed: onPressed,
               style: ElevatedButton.styleFrom(primary: Colors.transparent,fixedSize: Size(0, 50)),

@@ -18,6 +18,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int score = 0;
   int _counter = 10;
+  int r= 0;
+  int a = 0;
+  int b = 0;
+  int c = 0;
   Timer? timer;
   List ListImage = ['bird','cat','dinasour','elephant','goat','lion','monkey','pig','tiger','zebra'];
   Random random = new Random();
@@ -33,16 +37,17 @@ class _HomePageState extends State<HomePage> {
   String img(){
     int min =0;
     int max = ListImage.length - 1;
-    int r = min + random.nextInt(max-min);
-    int a = random.nextInt(max);
-    int b = random.nextInt(max);
-    int c = random.nextInt(max);
+    r = min + random.nextInt(max-min);
+    a = random.nextInt(max);
+    b = random.nextInt(max);
+    c = random.nextInt(max);
     namePicture = ListImage[r].toString();
     name1= ListImage[a].toString();
     name2= ListImage[b].toString();
     name3 = ListImage[c].toString();
     name4 = ListImage[r].toString();
     ListName = [name1,name2,name3,name4];
+    ListName.shuffle();
     return namePicture;
   }
   
@@ -120,19 +125,31 @@ class _HomePageState extends State<HomePage> {
       ),
       body: new Center(
         child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             new Visibility(
               visible: _vilsible,
               child: new MyOutlinedButton(
               onPressed: Start,
-              child: Text(textStart),
+              child: Text(textStart,style: TextStyle(fontSize: 64),),
               ),
             ),
-            new TimeAndScore(
-              score: score,
-              counter: _counter,),
-            new Picture(name: namePicture,),
-            new RandomButton(name1: ListName[3],name2: ListName[2],name3: ListName[1],name4: ListName[0],GetString: GetString,),
+            new Visibility(
+              visible: !_vilsible,
+              child: new TimeAndScore(
+                score: score,
+                counter: _counter,),
+              ),
+            new Visibility(
+              visible:  !_vilsible,
+              child: new Picture(name: namePicture,),
+            ),
+            new Visibility(
+              visible: !_vilsible,
+              child: new RandomButton(name1: ListName[0],name2: ListName[1],name3: ListName[2],name4: ListName[3],GetString: GetString,),
+            ),
+            
           ],
         ),
       ),
