@@ -17,7 +17,7 @@ class MyOutlinedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new DecoratedBox(
-      decoration: new BoxDecoration(gradient: LinearGradient(colors: [Colors.lightBlue.shade900, Colors.blue.shade50]),),
+      decoration: new BoxDecoration(gradient: LinearGradient(colors: [Colors.lightBlue.shade900, Colors.red]),),
       child: new Container(
         color: Colors.white,
         margin: new EdgeInsets.all(thickness),

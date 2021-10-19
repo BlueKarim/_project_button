@@ -18,12 +18,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int score = 0;
   int _counter = 10;
-  int r= 0;
-  int a = 0;
-  int b = 0;
-  int c = 0;
   Timer? timer;
-  List ListImage = ['bird','cat','dinasour','elephant','goat','lion','monkey','pig','tiger','zebra'];
+  List ListImage = []; //['bird','cat','dinasour','elephant','goat','lion','monkey','pig','tiger','zebra'];
   Random random = new Random();
   String namePicture = 'bird';
   String name1 = '';
@@ -35,17 +31,20 @@ class _HomePageState extends State<HomePage> {
   bool _vilsible = true;
 
   String img(){
+    ListImage = ['bird','cat','dinasour','elephant','goat','lion','monkey','pig','tiger','zebra'];
+    List Listcontext = ListImage;
     int min =0;
     int max = ListImage.length - 1;
-    r = min + random.nextInt(max-min);
-    a = random.nextInt(max);
-    b = random.nextInt(max);
-    c = random.nextInt(max);
+    int r = min + random.nextInt(max-min);
+    int a = random.nextInt(max);
+    int b = random.nextInt(max);
+    int c = random.nextInt(max);
     namePicture = ListImage[r].toString();
+    ListImage.remove(namePicture);
     name1= ListImage[a].toString();
     name2= ListImage[b].toString();
     name3 = ListImage[c].toString();
-    name4 = ListImage[r].toString();
+    name4 = namePicture;
     ListName = [name1,name2,name3,name4];
     ListName.shuffle();
     return namePicture;
