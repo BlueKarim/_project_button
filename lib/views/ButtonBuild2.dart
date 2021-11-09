@@ -12,14 +12,14 @@ class GradientButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return Container(
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
       child: 
           DecoratedBox(
             decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.lightBlue.shade900, Colors.red])),
             child: ElevatedButton(
               onPressed: onPressed,
-              style: ElevatedButton.styleFrom(primary: Colors.transparent,fixedSize: Size(0, 50)),
+              style: ElevatedButton.styleFrom(primary: Colors.transparent,fixedSize: const Size(0, 50)),
               child: child,
             ),
           ),

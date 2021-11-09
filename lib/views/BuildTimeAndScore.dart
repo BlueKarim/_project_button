@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'Picture.dart';
 
 class TimeAndScore extends StatelessWidget {
   final int score;
@@ -12,17 +10,17 @@ class TimeAndScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Center(
-      child: new Column(
+    return Center(
+      child: Column(
         children: [
-          new Text('Time : '+counter.toString(),
-            style: TextStyle(
+          Text('Time : '+counter.toString(),
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 32.0,
             ),
           ),
-          new Text('Score : '+score.toString(),
-            style: TextStyle(
+          Text('Score : '+score.toString(),
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 32.0),
           )
