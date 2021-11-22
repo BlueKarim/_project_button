@@ -1,8 +1,12 @@
+import 'dart:js';
 import 'package:_project_button/views/HomePage.dart';
+import 'package:_project_button/views/viewButton.dart';
+import 'package:flutter/material.dart';
 import 'package:momentum/momentum.dart';
 import 'package:_project_button/models/modelButton.dart';
 import 'dart:math';
 import 'dart:async';
+
 
 class ControllerButton extends MomentumController<ModelButton>{
   var animals=["bird","cat","dinasour","elephant","goat","lion","monkey","pig","tiger","zebra"];
@@ -11,13 +15,12 @@ class ControllerButton extends MomentumController<ModelButton>{
   Random rdAnimals=Random();
   var answers=List.filled(4, '');
   Timer? timer;
-  int time=10;
+  int time = 10;
   int? Location;
   int add=0;
   int? Location_animal;
   String temporary='';
   int score=0;
- // bool? click;
   @override
   ModelButton init(){
     Reset();
@@ -39,7 +42,6 @@ class ControllerButton extends MomentumController<ModelButton>{
     answers=List.filled(4, '');
     Location=rdLocation.nextInt(4);
     Location_animal=rdAnimals.nextInt(10);
-    //  colors=[Colors.blue,Colors.blue,Colors.blue,Colors.blue];
     correct_answer=animals[Location_animal!];
     answers[Location!]=correct_answer!;
     for(int i=0;;i++){

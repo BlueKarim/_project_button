@@ -9,36 +9,33 @@ import 'package:_project_button/controllers/controllerButton.dart';
 import 'package:_project_button/models/modelButton.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage(BuildContext context, { Key? key }) : super(key: key);
-  
   static BuildContext? Context;
-  GameView(BuildContext context){
-     Context=context;
-   }
+  HomePage(BuildContext context, { Key? key }) : super(key: key)
+  {
+    Context = context;
+  }
   static void Finish() {
-   showDialog(
-    context:Context!,
-    builder: (BuildContext context) {
-        return AlertDialog(
-      title:Text("Game over"),
-      content:Text("Bạn có muốn chơi lại không!"),
-      actions: [
-        ElevatedButton(
-          onPressed:(){
-            Navigator.of(context).pop(false);
-            Momentum.controller<ControllerButton>(context).Reset();
-          },
-          child: Text('Yes'),
+    showDialog(
+      context:Context!,
+      builder: (BuildContext context) => AlertDialog(
+          title:const Text("Game over!!!",style: TextStyle(fontSize: 24,color: Colors.red),),
+          content:const Text("Do you want play again!"),
+          actions: [
+            ElevatedButton(
+              onPressed:(){
+                Navigator.of(context).pop(false);
+                Momentum.controller<ControllerButton>(context).Reset();
+              },
+              child: const Text('Yes'),
+            ),
+            ElevatedButton(
+              onPressed:(){
+                Navigator.pushNamed(context, '/');
+              },
+              child: const Text('No'),
+            ),
+          ],
         ),
-        ElevatedButton(
-          onPressed:(){
-            Navigator.of(context).pop(false);
-          },
-          child: Text('No'),
-        ),
-      ],
-    );
-      },
     );
   }
   @override
@@ -46,7 +43,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

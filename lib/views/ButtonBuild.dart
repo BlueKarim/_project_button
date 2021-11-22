@@ -20,7 +20,7 @@ class MyOutlinedButton extends StatelessWidget {
       decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.lightBlue.shade900, Colors.red]),),
       child: Container(
         color: Colors.white,
-        margin: EdgeInsets.all(2),
+        margin: const EdgeInsets.all(2),
         child: OutlinedButton(
           onPressed: onPressed,
           style: style,
